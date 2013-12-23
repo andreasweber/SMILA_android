@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SMILA</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_glossary">Glossary</string>
+    
+<string name="__GLOSSARY_ID__">__GLOSSARY_TERM__</string>
+
+</resources>

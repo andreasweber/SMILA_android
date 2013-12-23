@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SMILA</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_glossary">Glossary</string>
+    
+<string name="GL_Action">Action</string>
+<string name="GL_Blackboard">Blackboard</string>
+<string name="GL_BPEL">BPEL</string>
+<string name="GL_Bucket">Bucket</string>
+<string name="GL_Bulk">Bulk</string>
+<string name="GL_Bulkbuilder">Bulkbuilder</string>
+<string name="GL_Crawler">Crawler</string>
+<string name="GL_Data_Object">Data Object</string>
+<string name="GL_DeltaChecker">DeltaChecker</string>
+<string name="GL_Delta_indexing">Delta indexing</string>
+<string name="GL_Eclipse">Eclipse</string>
+<string name="GL_Fetcher">Fetcher</string>
+<string name="GL_ID">ID</string>
+<string name="GL_JMX">JMX</string>
+<string name="GL_Job">Job</string>
+<string name="GL_Job_Run">Job Run</string>
+<string name="GL_Micro_bulk">Micro bulk</string>
+<string name="GL_ODE">ODE</string>
+<string name="GL_OSGi">OSGi</string>
+<string name="GL_Pipelet">Pipelet</string>
+<string name="GL_Record">Record</string>
+<string name="GL_Record_Bulk">Record Bulk</string>
+<string name="GL_Slot">Slot</string>
+<string name="GL_SNMP">SNMP</string>
+<string name="GL_Task">Task</string>
+<string name="GL_UpdatePusher">UpdatePusher</string>
+<string name="GL_Worker">Worker</string>
+<string name="GL_Worker_Description">Worker Description</string>
+<string name="GL_Workflow__asynchronous_">Workflow (asynchronous)</string>
+<string name="GL_Workflow__synchronous_BPEL_">Workflow (synchronous/BPEL)</string>
+<string name="GL_Workflow_run">Workflow run</string>
+<string name="GL_WSDL">WSDL</string>
+<string name="GL_WS_BPEL">WS-BPEL</string>
+<string name="__GLOSSARY_ID__">__GLOSSARY_TERM__</string>
+
+</resources>
