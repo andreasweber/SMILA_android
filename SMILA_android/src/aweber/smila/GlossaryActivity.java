@@ -18,7 +18,7 @@ public class GlossaryActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_listviewexampleactivity);
+		setContentView(R.layout.activity_glossar);
 
 		final ListView listview = (ListView) findViewById(R.id.listview);
 		String[] values = new String[] { getString(R.string.GL_Action), getString(R.string.GL_Blackboard), getString(R.string.GL_BPEL), getString(R.string.GL_Bucket), getString(R.string.GL_Bulk), getString(R.string.GL_Bulkbuilder), getString(R.string.GL_Crawler), getString(R.string.GL_Data_Object), getString(R.string.GL_DeltaChecker), getString(R.string.GL_Delta_indexing), getString(R.string.GL_Eclipse), getString(R.string.GL_Fetcher), getString(R.string.GL_ID), getString(R.string.GL_JMX), getString(R.string.GL_Job), getString(R.string.GL_Job_Run), getString(R.string.GL_Micro_bulk), getString(R.string.GL_ODE), getString(R.string.GL_OSGi), getString(R.string.GL_Pipelet), getString(R.string.GL_Record), getString(R.string.GL_Record_Bulk), getString(R.string.GL_Slot), getString(R.string.GL_SNMP), getString(R.string.GL_Task), getString(R.string.GL_UpdatePusher), getString(R.string.GL_Worker), getString(R.string.GL_Worker_Description), getString(R.string.GL_Workflow__asynchronous_), getString(R.string.GL_Workflow__synchronous_BPEL_), getString(R.string.GL_Workflow_run), getString(R.string.GL_WSDL), getString(R.string.GL_WS_BPEL), "__GLOSSARY_ID__" };
@@ -37,15 +37,7 @@ public class GlossaryActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
 				final String item = (String) parent.getItemAtPosition(position);
-				view.animate().setDuration(2000).alpha(0)
-						.withEndAction(new Runnable() {
-							@Override
-							public void run() {
-								list.remove(item);
-								adapter.notifyDataSetChanged();
-								view.setAlpha(1);
-							}
-						});
+				
 			}
 
 		});

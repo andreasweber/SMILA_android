@@ -28,7 +28,7 @@ public final class R {
         public static final int listview=0x7f080000;
     }
     public static final class layout {
-        public static final int activity_listviewexampleactivity=0x7f030000;
+        public static final int activity_glossar=0x7f030000;
         public static final int activity_main=0x7f030001;
     }
     public static final class menu {

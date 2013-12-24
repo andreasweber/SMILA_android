@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_listviewexampleactivity);
+		setContentView(R.layout.activity_glossar);
 
 		final ListView listview = (ListView) findViewById(R.id.listview);
 		String[] values = new String[] { "Description", "Glossary", "Committers" };
