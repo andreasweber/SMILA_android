@@ -4,5 +4,7 @@
     <string name="app_name">SMILA</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_glossary">Glossary</string>
+    <string name="title_activity_committer">Committer</string>
+    <string name="title_activity_description">Description</string>
 
 </resources>

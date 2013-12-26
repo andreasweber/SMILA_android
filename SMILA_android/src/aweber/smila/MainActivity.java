@@ -32,13 +32,21 @@ public class MainActivity extends Activity {
 		listview.setAdapter(adapter);
 
 		final Intent glossaryIntent = new Intent(this, GlossaryActivity.class);
+		final Intent committerIntent = new Intent(this, CommitterActivity.class);
+		final Intent descriptionIntent = new Intent(this, DescriptionActivity.class);
 
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
 				final String item = (String) parent.getItemAtPosition(position);
-				startActivity(glossaryIntent);
+				if ("Description".equals(item)) {
+					startActivity(descriptionIntent);	
+				} else if ("Glossary".equals(item)) {
+					startActivity(glossaryIntent);
+				} else if ("Committers".equals(item)) {
+					startActivity(committerIntent);
+				}
 			}
 
 		});

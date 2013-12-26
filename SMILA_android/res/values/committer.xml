@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+<string name="C_Andreas_Weber">Andreas Weber</string>
+<string name="C_Peter_Wissel">Peter Wissel</string>
+<string name="C_J_rgen_Schumacher">Jürgen Schumacher</string>
+<string name="C_Daniel_Stucky">Daniel Stucky</string>
+<string name="C_Andreas_Schank">Andreas Schank</string>
+<string name="C_Thomas_Menzel">Thomas Menzel</string>
+<string name="C_Marco_Strack">Marco Strack</string>
+<string name="C_Peter_Palmar">Peter Palmar</string>
+<string name="C_Tobias_Liefke">Tobias Liefke</string>
+<string name="C_Drazen_Cindric">Drazen Cindric</string>
+<string name="__COMMITTER_ID__">__COMMITTER__</string>
+
+</resources>
