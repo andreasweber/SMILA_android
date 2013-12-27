@@ -27,20 +27,22 @@ public class CommitterActivity extends Activity {
 		// add("__COMMITTER_ID__", "__COMMITTER_DETAILS_ID__");
 		
 		final String[] fromMapKey = new String[] { "name", "details" };
-		final int[] toLayoutId = new int[] { android.R.id.text1, android.R.id.text2 };
+		final int[] toLayoutId = new int[] { R.id.committerName, R.id.committerDetails };
 
-		ListAdapter listAdapter = new SimpleAdapter(this, committersData, android.R.layout.simple_list_item_2,
+		ListAdapter listAdapter = new SimpleAdapter(this, committersData, R.layout.committers_list_row,
 				fromMapKey, toLayoutId);
-		
+
 		listview.setAdapter(listAdapter);
 	}
 
 	private void add(String committerId, String committerDetailsId) {
 		int id = getResources().getIdentifier(committerId, "string", getPackageName());
 		String committer = getResources().getString(id);
+		int detailsId = getResources().getIdentifier(committerDetailsId, "string", getPackageName());
+		String committerDetails = getResources().getString(detailsId);
 		Map<String, String> entry = new HashMap<String, String>();
 		entry.put("name", committer);
-		entry.put("details", committer + " details");
+		entry.put("details", committerDetails);
 		committersData.add(entry);
 	}
 
