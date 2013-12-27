@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-<string name="idDescription">SMILA is a framework for creating scalable server-side systems that process large amounts of unstructured data in order to build applications in the area of search, linguistic analysis, information mining or similar. The goal is to enable you to easily integrate data source connectors, search engines, sophisticated analysis methods and other components by gaining scalability and reliability out-of-the-box.
- As such, SMILA provides these main parts:
- 
- JobManager : a system for asynchronous, scalable processing of data using configurable workflows. The system is able to reliably distribute the tasks to be done on big clusters of hosts. The workflows orchestrate easy-to-implement workers that can be used to integrate application-specific processing logic.
- Crawlers : concepts and basic implementations for scalable components that extract data from data sources. 
- Pipelines : a system for processing synchronous requests (e.g. search requests) by orchestrating easy-to-implement components ( pipelets ) in workflows defined in BPEL.
- Storage : concepts for integrating big-data storages for efficient persistence of the processed data.
- 
- Eventually, all SMILA functionality is accessible for external clients via an HTTP ReST API using JSON as the exchange data format.
- As an Eclipse system, SMILA is built adhering to OSGi standard and makes a heavy use of the OSGi service component model.</string>
+<string name="idDescription">SMILA is a <i>framework</i> for creating scalable server-side systems that process large amounts of unstructured data in order to build applications in the area of search, linguistic analysis, information mining or similar. The goal is to enable you to easily integrate data source connectors, search engines, sophisticated analysis methods and other components by gaining scalability and reliability out-of-the-box.
+\n\n As such, SMILA provides these main parts:
+\n\n
+ <b>JobManager</b> : a system for asynchronous, scalable processing of data using configurable <i>workflows</i>. The system is able to reliably distribute the <i>tasks</i> to be done on big clusters of hosts. The workflows orchestrate easy-to-implement <i>workers</i> that can be used to integrate application-specific processing logic.
+\n\n <b>Crawlers</b> : concepts and basic implementations for scalable components that extract data from data sources. 
+\n\n <b>Pipelines</b> : a system for processing synchronous requests (e.g. search requests) by orchestrating easy-to-implement components (<i>pipelets</i>) in workflows defined in BPEL.
+\n\n <b>Storage</b> : concepts for integrating big-data storages for efficient persistence of the processed data.
+\n\n 
+ Eventually, all SMILA functionality is accessible for external clients via an <i>HTTP ReST AP</i>I using <i>JSON</i> as the exchange data format.
+\n\n As an Eclipse system, SMILA is built adhering to <i>OSGi</i> standard and makes a heavy use of the OSGi <i>service</i> component model.
+\n\n</string>
 
 </resources>

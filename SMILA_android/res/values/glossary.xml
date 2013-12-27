@@ -8,11 +8,11 @@
 <string name="GL_Attribute">Attribute</string>
 <string name="GL_TXT_Attribute">Attributes are parts of records and contain simple data objects that are easily represented in XML or json, such as String, Integer, Float, and Date.</string>
 <string name="GL_Blackboard">Blackboard</string>
-<string name="GL_TXT_Blackboard">or blackboard service - The blackboard service manages SMILA records during processing in a SMILA component (connectivity, workflow processor). In addition it hides the handling of record persistence from these components. For a complete description see Usage of Blackboard Service.</string>
+<string name="GL_TXT_Blackboard">or <b>blackboard service</b> - The blackboard service manages SMILA records during processing in a SMILA component (connectivity, workflow processor). In addition it hides the handling of record persistence from these components. For a complete description see Usage of Blackboard Service.</string>
 <string name="GL_BPEL">BPEL</string>
 <string name="GL_TXT_BPEL">BPEL is an XML-based language defining several constructs to write business processes. It defines a set of basic control structures like conditions or loops as well as elements to invoke web services and receive messages from services. It relies on WSDL to express web services interfaces. Message structures can be manipulated, assigning parts or the whole of them to variables that can in turn be used to send other messages.</string>
 <string name="GL_Bucket">Bucket</string>
-<string name="GL_TXT_Bucket">Data container in an asynchronous workflow, containing logically grouped data objects of the same type. Can be transient for interim data, which means that data is not persisted and removal of data is under job management control, or persistent, which means that removal of data is not under job management control.</string>
+<string name="GL_TXT_Bucket">Data container in an asynchronous workflow, containing logically grouped data objects of the same type. Can be <i>transient</i> for interim data, which means that data is not persisted and removal of data is under job management control, or <i>persistent</i>, which means that removal of data is not under job management control.</string>
 <string name="GL_Bulk">Bulk</string>
 <string name="GL_TXT_Bulk">a number of records bundled in a single file to enhance throughput when processing records in asynchronous workflows.</string>
 <string name="GL_Bulkbuilder">Bulkbuilder</string>
