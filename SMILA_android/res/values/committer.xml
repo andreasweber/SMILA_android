@@ -2,15 +2,35 @@
 <resources>
     
 <string name="C_Andreas_Weber">Andreas Weber</string>
+<string name="C_D_Andreas_Weber"> (Empolis Information Management GmbH): co-lead
+</string>
 <string name="C_Peter_Wissel">Peter Wissel</string>
+<string name="C_D_Peter_Wissel"> (brox IT-Solutions GmbH): co-lead
+</string>
 <string name="C_J_rgen_Schumacher">Jürgen Schumacher</string>
+<string name="C_D_J_rgen_Schumacher"> (Empolis Information Management GmbH): committer
+</string>
 <string name="C_Daniel_Stucky">Daniel Stucky</string>
+<string name="C_D_Daniel_Stucky"> (Empolis Information Management GmbH): committer
+</string>
 <string name="C_Andreas_Schank">Andreas Schank</string>
+<string name="C_D_Andreas_Schank"> (Empolis Information Management GmbH): committer
+</string>
 <string name="C_Thomas_Menzel">Thomas Menzel</string>
+<string name="C_D_Thomas_Menzel"> (individual): committer
+</string>
 <string name="C_Marco_Strack">Marco Strack</string>
+<string name="C_D_Marco_Strack"> (Empolis Information Management GmbH): committer
+</string>
 <string name="C_Peter_Palmar">Peter Palmar</string>
+<string name="C_D_Peter_Palmar"> (Empolis Information Management GmbH): committer
+</string>
 <string name="C_Tobias_Liefke">Tobias Liefke</string>
+<string name="C_D_Tobias_Liefke"> (individual): committer
+</string>
 <string name="C_Drazen_Cindric">Drazen Cindric</string>
+<string name="C_D_Drazen_Cindric"> (individual): committer
+</string>
 <string name="__COMMITTER_ID__">__COMMITTER__</string>
 
 </resources>
