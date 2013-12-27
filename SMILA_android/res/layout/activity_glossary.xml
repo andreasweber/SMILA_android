@@ -10,6 +10,7 @@
 
     <ExpandableListView
         android:id="@+id/listview_glossary"
+        android:background="#000000"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

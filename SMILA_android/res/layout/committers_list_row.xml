@@ -8,7 +8,8 @@
         android:id="@+id/committerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp" >
+        android:textColor="#A1C57D" 
+        android:textSize="18sp" >
     </TextView>
 
     <TextView
@@ -16,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/details"
+        android:textColor="#51A126"
         android:textSize="12sp" >
     </TextView>
 

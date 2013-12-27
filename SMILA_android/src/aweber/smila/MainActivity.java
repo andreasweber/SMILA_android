@@ -1,11 +1,8 @@
 package aweber.smila;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,7 +25,7 @@ public class MainActivity extends Activity {
 		for (int i = 0; i < values.length; ++i) {
 			list.add(values[i]);
 		}
-		final StableArrayAdapter adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
+		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.main_list_row, list);
 		listview.setAdapter(adapter);
 
 		final Intent glossaryIntent = new Intent(this, GlossaryActivity.class);
@@ -41,7 +38,7 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
 				final String item = (String) parent.getItemAtPosition(position);
 				if ("Description".equals(item)) {
-					startActivity(descriptionIntent);	
+					startActivity(descriptionIntent);
 				} else if ("Glossary".equals(item)) {
 					startActivity(glossaryIntent);
 				} else if ("Committers".equals(item)) {
@@ -50,30 +47,6 @@ public class MainActivity extends Activity {
 			}
 
 		});
-	}
-
-	private class StableArrayAdapter extends ArrayAdapter<String> {
-
-		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-		public StableArrayAdapter(Context context, int textViewResourceId, List<String> objects) {
-			super(context, textViewResourceId, objects);
-			for (int i = 0; i < objects.size(); ++i) {
-				mIdMap.put(objects.get(i), i);
-			}
-		}
-
-		@Override
-		public long getItemId(int position) {
-			String item = getItem(position);
-			return mIdMap.get(item);
-		}
-
-		@Override
-		public boolean hasStableIds() {
-			return true;
-		}
-
 	}
 
 	@Override
