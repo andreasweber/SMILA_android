@@ -7,11 +7,9 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import aweber.smila.R;
 
 public class CommitterActivity extends Activity {
 	List<Map<String, String>> committersData;
@@ -54,13 +52,6 @@ add("C_Drazen_Cindric", "C_D_Drazen_Cindric");
 		entry.put("name", committer);
 		entry.put("details", committerDetails);
 		committersData.add(entry);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
 	}
 
 }
