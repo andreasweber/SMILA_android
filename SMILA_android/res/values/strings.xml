@@ -6,5 +6,6 @@
     <string name="title_activity_glossary">Glossary</string>
     <string name="title_activity_committer">Committer</string>
     <string name="title_activity_description">Description</string>
+    <string name="title_activity_faq">FAQ</string>
 
 </resources>

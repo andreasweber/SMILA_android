@@ -45,6 +45,14 @@
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="aweber.smila.MainActivity" />
         </activity>
+        <activity
+            android:name="aweber.smila.FaqActivity"
+            android:label="@string/title_activity_faq" 
+            android:parentActivityName="aweber.smila.MainActivity" >
+        	<meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="aweber.smila.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

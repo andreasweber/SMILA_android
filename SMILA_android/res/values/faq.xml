@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+<string name="FAQ_Q_1"><![CDATA[Where do I find the log file?]]></string>
+<string name="FAQ_A_1"><![CDATA[<p>The SMILA log file\'s name is <tt>SMILA.log</tt> and is to be found at the applications working folder:
+</p><p>If you extracted SMILA from a zip, you can find the log file in the folder, where you extracted the SMILA.
+</p>
+<pre>
+/&lt;SMILA&gt;
+ /about_files
+ /configuration
+ /features
+ /jmxclient
+ /plugins
+ /workspace
+.eclipseproduct
+...
+ SMILA
+ SMILA.ini
+ -&gt; SMILA.log &lt;-
+</pre>
+<p>If you started SMILA from within the Eclipse IDE using the launcher, you can find the log file at the project <tt>SMILA.application</tt> in your workspace.
+</p>]]></string>
+<string name="FAQ_Q_2"><![CDATA[How can I see that SMILA started correctly?]]></string>
+<string name="FAQ_A_2"><![CDATA[<p>1. Open your browser at <code><a rel="nofollow" class="external free" href="http://localhost:8080/smila">http://localhost:8080/smila</a></code>, you should see a system state overview and links to different APIs.
+</p><p>2. You should see no stacktraces in the log&#160;;) and it should end with an entry like the following if SMILA has just started:
+</p>
+<pre>
+... INFO... internal.HttpServiceImpl - HTTP server started successfully on port 8080.
+</pre>]]></string>
+<string name="FAQ_Q_3"><![CDATA[I receive an <i>Out of Memory</i> error? What can I do?]]></string>
+<string name="FAQ_A_3"><![CDATA[<p>While building with <tt>SMILA.builder</tt> I receive the following errror message: 
+</p><p><code>Build Failed - Out of Memory - Java heap space</code>
+</p><p>The reason for this is that Ant hasn´t enough heap space to build the project. You will have to expand the heap space by setting the VM arguments accordingly. In eclipse try the following:
+</p>
+<ol><li> Click <i>Open external tools dialog</i> and select your Ant build profile.
+</li><li> Switch to the <i>JRE</i> tab and add the following VM arguments: <tt>-Xms40m -Xmx512m</tt>.
+</li><li> Save and build again.
+</li></ol>
+<p><br />
+</p>]]></string>
+<string name="FAQ_Q_4"><![CDATA[Build fails with \'java.net.MalformedURLException: no protocol: ${eclipseBaseURL}\' message]]></string>
+<string name="FAQ_A_4"><![CDATA[<p>The complete error looks like this:
+</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr"><div class="text source-text"><pre class="de1">...
+build.core:
+ [java] Buildfile: /home/scum36/Eclipse/helios-sr2-build/plugins/org.eclipse.pde.build_3.6.2.R36x_20110203/scripts/productBuild/productBuild.xml
+ [java] 
+ [java] main:
+ [java] 
+ [java] preBuild:
+ [java] 
+ [java] preSetup:
+ [java] 
+ [java] checkLocalMaps:
+ [java] 
+ [java] getMapFiles:
+ [java] [cvs] Caught exception: Cannot run program &quot;cvs&quot; (in directory &quot;/home/scum36/workspace/SMILA/smila.build/maps&quot;): java.io.IOException: error=2, No such file or directory
+ [java] 
+ [java] postSetup:
+ [java] 
+ [java] checkLocalBase:
+ [java] 
+ [java] getBaseComponents:
+ [java] 
+ [java] BUILD FAILED
+ [java] /home/scum36/Eclipse/helios-sr2-build/plugins/org.eclipse.pde.build_3.6.2.R36x_20110203/scripts/productBuild/productBuild.xml:33: The following error occurred while executing this line:
+ [java] /home/scum36/Eclipse/helios-sr2-build/plugins/org.eclipse.pde.build_3.6.2.R36x_20110203/scripts/build.xml:53: The following error occurred while executing this line:
+ [java] /home/scum36/workspace/SMILA/SMILA.builder/customTargets.xml:80: The following error occurred while executing this line:
+ [java] /home/scum36/workspace/SMILA/SMILA.builder/customTargets.xml:25: java.net.MalformedURLException: no protocol: ${eclipseBaseURL}
+ [java] 
+ [java] Total time: 0 seconds
+ [java] An error has occurred. See the log file
+ [java] /home/scum36/workspace/.metadata/.log.</pre></div></div>
+<p><br />
+Probably you did forget to copy <code>build.properties.template</code> to <code>build.properties</code> in <code>SMILA.builder</code> and adapt it. See 
+<a rel="nofollow" class="external text" href="http://wiki.eclipse.org/SMILA/Development_Guidelines/Howto_build_a_SMILA-Distribution#Setting_the_Target_Build_Platform">How to build SMILA</a>.
+</p>]]></string>
+<string name="FAQ_Q_5"><![CDATA[How to start/stop and manage SMILA as a background process on a Linux machine?]]></string>
+<string name="FAQ_A_5"><![CDATA[<p>Since the default configuration (stored in SMILA.ini) of the OSGi runtime (in our case Equinox) launcher expects that you execute it in foreground and therefore have an OSGi console running in your shell and listening to the standard input, the first thing we have to do is to advise the launcher (and thereby Equinox) to listen on some TCP port instead. This is done by adding a new line with the port number just after the "-console" line.
+</p><p>For example, to set console to listen at TCP port 9999, SMILA.ini would look like this:
+</p><p><code>
+</p>
+<pre>-console
+9999
+...
+</pre>
+<p></code>
+</p><p>Now, after SMILA has been started with “<tt>$ nohup./SMILA &amp;</tt>”, the console can be accessed from any computer simply by opening a telnet session:
+</p><p><tt>
+$ telnet &lt;smila_host_name&gt; &lt;console_port&gt;
+</tt>
+</p><p><br />
+</p>
+<table style="border:1px solid #AAA; background:#f9f9f9; width:100%; margin:0 auto 1em auto; padding:.2em; text-align:justify;">
+<tr>
+<td style="width:50px;"> <a href="/File:Symbol_comment_vote.png" class="image"><img alt="Symbol comment vote.png" src="/images/9/9e/Symbol_comment_vote.png" width="50" height="51" /></a>
+</td>
+<td style="padding-left:.2em;"> If you are logged in via telnet and just want to close this connection and not to stop Equinox running SMILA, than just type “<tt>disconnect</tt>”. Otherwise, if you want to stop SMILA and close the connection, use “<tt>close</tt>” - as you normally would do on a console running in your shell.
+</td></tr></table>
+<p>For the complete documentation on eclipse runtime options please see: <a rel="nofollow" class="external free" href="http://help.eclipse.org/indigo/index.jsp?topic=/org.eclipse.platform.doc.isv/reference/misc/runtime-options.html">http://help.eclipse.org/indigo/index.jsp?topic=/org.eclipse.platform.doc.isv/reference/misc/runtime-options.html</a>
+</p>]]></string>
+<string name="FAQ_Q_6"><![CDATA[new bundle was not started]]></string>
+<string name="FAQ_A_6"><![CDATA[<p>After launching SMILA my new bundle doesn\'t seem to be started.
+</p><p>If you started <b><tt>SMILA.launch</tt></b> in eclipse to launch SMILA: The launcher didn\'t start your new bundle. Try this:
+</p>
+<ol><li> Add your bundle by selecting "Run Configurations" in eclipse and choose your SMILA profile.
+</li><li> Select your bundle in the list and set the checkmark.
+</li><li> Set the start level to "4" and the autostart to "true".
+</li></ol>
+<p>If you started <b><tt>SMILA.EXE</tt></b> to launch SMILA: Your bundle isn`t defined in <tt>config.ini</tt> or the start level isn´t correct. Try this:
+</p>
+<ol>
+<li>Open the file <tt>configuration/config.ini</tt> and add your bundle as shown below:<br />
+<code>org.eclipse.smila.connectivity.framework.crawler.owncrawler@5:start, \</code></li>
+<li>Open the <tt>build.properties</tt> file of your bundle and include the folders <tt>schemas/</tt>, <tt>OSGI-INF/</tt>, and the file <tt>plugin.xml</tt>.</li>
+</ol>]]></string>
+<string name="FAQ_Q_7"><![CDATA[I changed bundle settings in my config.ini, but after SMILA restart nothing changed]]></string>
+<string name="FAQ_A_7"><![CDATA[<p>Check your <tt>config.ini</tt> for unusual whitespaces (e.g. a tab) between the (edited) bundle entries or after the backslashes on line ends - and remove them. 
+</p><p>If that doesn\'t help, see question (resp. answer) before.
+</p><p><br />
+</p>]]></string>
+<string name="FAQ_Q_8"><![CDATA[How do I change the HTTP port of SMILA?]]></string>
+<string name="FAQ_A_8"><![CDATA[<p>The HTTP port is configured in fie <tt>configuration/org.eclipse.smila.clusterconfig.simple/clusterconfig.json</tt>. Change it there and restart SMILA.
+</p><p>See <a href="/SMILA/Documentation/JettyHttpServer#Setting_the_HTTP_port" title="SMILA/Documentation/JettyHttpServer">SMILA/Documentation/JettyHttpServer#Setting_the_HTTP_port</a> for details.
+</p>]]></string>
+<string name="FAQ_Q_9"><![CDATA[I started a crawl job, the job was started successfully, but nothing seems to happen]]></string>
+<string name="FAQ_A_9"><![CDATA[<p>Check the SMILA log file for errors.
+</p><p>Check the state of the crawl job in <a rel="nofollow" class="external text" href="http://localhost:8080/smila/jobmanager/jobs">jobmanager state API</a>
+</p>
+<ul><li> if the state in your crawl job is "RUNNING", check the mode it has been started
+<ul><li> if it says <span style="font-family:monospace;">"mode": "STANDARD"</span>, stop the job run (<span style="font-family:monospace;">POST <a rel="nofollow" class="external free" href="http://localhost:8080/smila/jobmanager/jobs/">http://localhost:8080/smila/jobmanager/jobs/</a>&lt;job name&gt;/&lt;job run id&gt;/finish</span>) and start it again with mode "runOnce", e.g. <span style="font-family:monospace;">POST <a rel="nofollow" class="external free" href="http://localhost:8080/smila/jobmanager/jobs/">http://localhost:8080/smila/jobmanager/jobs/</a>&lt;job name&gt; {"mode": "runOnce"</span>}
+</li></ul>
+</li><li> if the state is FINISHING
+<ul><li> check the job into which the crawl job pushes its records for processed records or errors.
+</li></ul>
+</li><li> if everything up to now is OK
+<ul><li> just wait some time, the autocommit handler maybe hasn\'t yet committed the data to the Solr index
+</li><li> check <span style="font-family:monospace;">autoCommit</span> settings in the <tt>solrconfig.xml</tt> file of your Solr core.
+</li></ul>
+</li></ul>]]></string>
+<string name="FAQ_Q_10"><![CDATA[Why do I get a timeout exception during a (long running) pipeline execution?]]></string>
+<string name="FAQ_A_10"><![CDATA[<p>In SMILA there\'s a timeout configured for a pipeline execution:
+</p>
+<dl><dd> <tt>configuration/org.eclipse.smila.processing.bpel/processor.properties</tt>
+</dd></dl>
+<p>See entry: <code>pipeline.timeout</code>
+</p>]]></string>
+<string name="FAQ_Q_11"><![CDATA[My xpath expression doesnt work]]></string>
+<string name="FAQ_A_11"><![CDATA[<ol><li> Check that the expression is correct with a XPath tool
+</li><li> ensure that the attributes are not filtered out, see <a href="/SMILA/Documentation/HowTo/How_to_filter_and_access_record_data_in_BPEL" title="SMILA/Documentation/HowTo/How to filter and access record data in BPEL">SMILA/Documentation/HowTo/How_to_filter_and_access_record_data_in_BPEL</a>
+</li></ol>
+<p><b>Helpful log points</b>
+</p>
+<table width="100%" style="font-family: Trebuchet MS;vertical-align:text-top;" border="1">
+
+<tr style="font-weight:bold;font-size:larger;color:white;background:gray;text-align:center;">
+<td> Area </td>
+<td> id </td>
+<td> level </td>
+<td> Comment
+</td></tr>
+<tr>
+<td> BPEL </td>
+<td> org.eclipse.smila.processing.bpel.activities.PipeletManager </td>
+<td> debug </td>
+<td> Log BPEL request XML before and after pipelet invocation. Note: this contains the XML for the records but only their filtered version.
+</td></tr>
+<tr>
+<td> BPEL </td>
+<td> org.eclipse.smila.processing.bpel.activities.PipeletManager </td>
+<td> trace</td>
+<td> Log full XML of records after pipelet invocation. Note: this is the real thing unfiltered.
+</td></tr>
+<tr>
+<td> BPEL </td>
+<td> org.eclipse.smila.processing.bpel.BpelWorkflowProcessor </td>
+<td> trace</td>
+<td> Log full XML of records going into and out of a pipeline.
+</td></tr></table>]]></string>
+<string name="FAQ_Q_12"><![CDATA[I want to use the ConfigUtils class in my Pipelet to read the configuration, where do I have to put my configuration files?]]></string>
+<string name="FAQ_A_12"><![CDATA[<p>Configuration files are searched for in the following order:
+</p>
+<ol><li> <tt>&lt;SMILA&gt;/configuration/&lt;bundle-name&gt;/&lt;config-file&gt;</tt>
+</li><li> <tt>&lt;config-file&gt;</tt> in the root path of the bundle jar-file
+</li></ol>
+<p>See <a href="/SMILA/Project_Concepts/Simple_configuration_handler" title="SMILA/Project Concepts/Simple configuration handler">Configuration Handler</a> for more information.
+</p>]]></string>
+<string name="FAQ_Q_13"><![CDATA[I get classloading errors in invocations of my own Pipelet when running SMILA outside the IDE. In the IDE it works]]></string>
+<string name="FAQ_A_13"><![CDATA[<p>The error could look like this:
+</p><p><code>
+2010-11-19 11:28:36,101 ERROR [ODEServerImpl-1
+] vpu.JacobVPU - Method "run" in class "org.apache.ode.bpel.rtrep.v2.EXTENSIONACTIVITY" threw an unexpected exception.
+java.lang.LinkageError: loader constraint violation: loader (instance of org/eclipse/osgi/internal/baseadaptor/DefaultClassLoader) previously initiated loading for a different type with name "org/w3c/dom/Document"
+</code>
+</p><p>We are not completely sure, why this happens, but a solution is to set this system property in the SMILA.ini file:
+</p><p><code>-Dosgi.java.profile.bootdelegation=override</code>
+</p><p>Thamks to Bogdan Sacaleanu for the solution. See this <a rel="nofollow" class="external text" href="http://smila.markmail.org/thread/sj4vhcikq2wndtdp">thread in the smila-dev mailing list</a> for additional details.
+</p><p><br />
+</p>]]></string>
+<string name="FAQ_Q_14"><![CDATA[I implemented/deployed an OSGi Service but it seems that it isn\'t activated]]></string>
+<string name="FAQ_A_14"><![CDATA[<p>Check your bundle, it should contain a file like that: 
+</p>
+<ul><li><tt>OSGI-INF/&lt;myService&gt;.xml</tt>
+</li></ul>
+<p>In this file your service has to be referenced. If you have copied the file from some other service, be sure to change the component name in the root element to something unique, because DS does not start multiple services with the same component name. 
+</p>
+<ul><li><tt>&lt;component name="&lt;myService&gt;" immediate="true"&gt;</tt>
+</li></ul>
+<p>Also the file has to be referenced in the META-INF / MANIFEST.MF file of your bundle as a service component: 
+</p>
+<ul><li><tt>Service-Component: OSGI-INF/&lt;myService&gt;.xml</tt>
+</li></ul>
+<p>On the "Build" page of the manifest editor, you must add the OSGI-INF directory to the binary build. 
+</p><p>And finally, your bundle has to be started at SMILA launch, by adding it to the <tt>configuration/config.ini</tt>:<br /> <tt>... </tt><br /> <tt>&lt;bundle-id&gt;@4:start, \</tt><br /> <tt>... </tt> 
+</p><p>If you are using <b><tt>SMILA.launch</tt></b> to launch SMILA in eclipse IDE, you have to open the run/debug configuration of SMILA, check the new bundle and set Auto-Start to "true". 
+</p><p>If you checked all the things above and it still doesn\'t work: 
+</p>
+<ul><li>Implement an <tt>activate()</tt> method in your service - if not already there, and check if it\'s called at startup. 
+</li><li>If your service depends on other services, check if those are activated 
+</li><li>If your service uses other services, check the naming of the set/unset methods in the Java code vs. those specified in the <tt>&lt;myService&gt;.xml</tt> 
+</li><li>If your services uses 3rd-party-jars, make sure that they are specified in the <tt>Bundle-ClassPath</tt> section of your MANIFEST.MF (Do not reference the lib folder here, instead reference all jars, e.g. <tt>Bundle-ClassPath:., &lt;lib1.jar&gt;, &lt;lib2.jar&gt;</tt>). Make also sure, that they are added to the binary build ("Build" page of the manifest editor). 
+</li><li>If your service has super-classes you may need to include <tt>Import-Package:</tt> declarations of the super-classes in your service implementation class even if there are no compile errors. 
+</li><li>Use the OSGi console, e.g. via: <tt>telnet &lt;host&gt; 9005</tt> 
+<ul><li><tt>ss &lt;bundle-ID&gt;</tt> - check if your bundle is in the list and ACTIVE (the bundle-ID is the "Bundle-SymbolicName" from the MANIFEST.MF) 
+<ul><li>if it isn\'t in the list, the bundle is not correctly deployed 
+</li><li>if it isn\'t ACTIVE but only RESOLVED it\'s not started (-&gt; see hints above) 
+</li></ul>
+</li><li><tt>bundle &lt;id&gt;</tt> - check if your service is listed here in the "Registered Services" section (the "id" can be taken from the "ss" output) 
+<ul><li>if it isn\'t there, your service is not correctly deployed (-&gt; check all points above)
+</li></ul>
+</li></ul>
+</li></ul>]]></string>
+<string name="FAQ_Q_16"><![CDATA[I get classloading errors when I try to access an external Web Service using JAX-WS]]></string>
+<string name="FAQ_A_16"><![CDATA[<p>Class loading problems often occur when using third party libraries that use the "thread context classloader" in OSGi, and standard implementations of Java specifications by Sun/Oracle (or other non-OSGi-aware parties...) do this very often. 
+</p><p>The only solution we currently know of is to wrap the critical section (in this case it\'s the construction of the webservice client class) in a piece of code like this:
+</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr"><div class="java source-java"><pre class="de1"><span class="kw3">ClassLoader</span> tccl <span class="sy0">=</span> <span class="kw3">Thread</span>.<span class="me1">currentThread</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">getContextClassLoader</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">try</span> <span class="br0">&#123;</span>
+ <span class="kw3">Thread</span>.<span class="me1">currentThread</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">setContextClassLoader</span><span class="br0">&#40;</span>getClass<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">getClassLoader</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ <span class="coMULTI">/*
+ * initialize the client
+ */</span>
+<span class="br0">&#125;</span> <span class="kw1">finally</span> <span class="br0">&#123;</span>
+ <span class="kw3">Thread</span>.<span class="me1">currentThread</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">setContextClassLoader</span><span class="br0">&#40;</span>tccl<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></div></div>
+<p>See also <a rel="nofollow" class="external text" href="http://www.eclipse.org/forums/index.php/t/266362/">this forum thread</a>.
+</p><p><br />
+</p>]]></string>
+<string name="FAQ_Q_17"><![CDATA[More classloader errors]]></string>
+<string name="FAQ_A_17"><![CDATA[<p>If you get an error like this:
+</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr"><div class="text source-text"><pre class="de1">Caused by: java.lang.LinkageError: loader constraint violation: when resolving field &quot;DATETIME&quot; the class loader (instance of 
+ org/eclipse/osgi/internal/baseadaptor/DefaultClassLoader) of the referring class, javax/xml/datatype/DatatypeConstants, and the class loader (instance of &lt;bootloader&gt;) for the field\'s resolved type, javax/xml/namespace/QName, have different Class objects for that type</pre></div></div>
+<p>the reason is most likely that you have classes in the bundle classpath of your bundle that contains classes which are also part of the JDK runtime library (java.*, javax.*). Remove these classes from the bundle and it should work.
+</p><p>See also <a rel="nofollow" class="external text" href="http://www.eclipse.org/forums/index.php/t/266362/">this forum thread</a>.
+</p>
+ 
+
+ 
+</div><div class="printfooter">
+Retrieved from "<a href="http://wiki.eclipse.org/index.php?title=SMILA/FAQ&amp;oldid=351344">http://wiki.eclipse.org/index.php?title=SMILA/FAQ&amp;oldid=351344</a>"</div>
+	 <div id=\'catlinks\' class=\'catlinks\'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="/Category:SMILA" title="Category:SMILA">SMILA</a></li></ul></div></div> 
+ </div>
+ </div>
+
+
+ </div>
+
+ <div class="visualClear"></div>
+
+	 
+
+
+ </div>
+ </div>
+ <div id="clearFooter"/>
+ <div id="footer" > 
+	 <ul id="footernav">
+ <li class="first"><a href="http://www.eclipse.org/">Home</a></li>
+ 	<li><a href="http://www.eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+	 <li><a href="http://www.eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+		<li><a href="http://www.eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+ <li><a href="http://www.eclipse.org/org/foundation/contact.php">Contact</a></li>
+ 	<li><a href="/Eclipsepedia:About" title="Eclipsepedia:About">About Eclipsepedia</a></li>
+	 </ul>
+ <span id="copyright">Copyright &copy; 2013 The Eclipse Foundation. All Rights Reserved</span>
+	 <p id="footercredit">This page was last modified 11:17, 12 November 2013 by <a href="/User:Juergen.schumacher.empolis.com" title="User:Juergen.schumacher.empolis.com">Juergen Schumacher</a>. Based on work by <a href="/User:Andreas.weber.empolis.com" title="User:Andreas.weber.empolis.com">Andreas Weber</a>, <a href="/index.php?title=User:Juergen.schumacher.attensity.com&amp;action=edit&amp;redlink=1" class="new" title="User:Juergen.schumacher.attensity.com (page does not exist)">Juergen Schumacher</a> and <a href="/User:Tmenzel.brox.de" title="User:Tmenzel.brox.de">thomas menzel</a> and <a href="/index.php?title=SMILA/FAQ&amp;action=credits" title="SMILA/FAQ">others</a>.</p>
+	 <p id="footerviews">This page has been accessed 9,779 times.</p>
+	 </div>
+
+ 
+ 
+ 
+ 	
+
+
+
+		
+
+ 
+	 
+ 
+ 
+</div>
+
+ </body></html>]]></string>
+<string name="__FAQ_QUESTION_ID__"><![CDATA[__FAQ_QUESTION__]]></string>
+
+</resources>

@@ -7,12 +7,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#000000"
-    tools:context=".MainActivity" >
+    tools:context=".FaqActivity" >
 
-    <ListView
-        android:id="@+id/listview_main"
+    <ExpandableListView
+        android:id="@+id/listview_faq"
         android:background="#000000"
-        android:textColor="#51A126"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
