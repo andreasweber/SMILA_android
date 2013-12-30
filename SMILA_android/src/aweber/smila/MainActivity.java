@@ -21,7 +21,9 @@ public class MainActivity extends Activity {
 		String[] values = new String[] { "Description  ", //
 				"Glossary     ", //
 				"FAQ          ", //
-				"Committers   " };
+				"Committers   ", //
+				"Monitoring   ", //
+		};
 
 		final ArrayList<String> list = new ArrayList<String>();
 		for (int i = 0; i < values.length; ++i) {
@@ -34,6 +36,7 @@ public class MainActivity extends Activity {
 		final Intent committerIntent = new Intent(this, CommitterActivity.class);
 		final Intent descriptionIntent = new Intent(this, DescriptionActivity.class);
 		final Intent faqIntent = new Intent(this, FaqActivity.class);
+		final Intent monitoringIntent = new Intent(this, MonitoringActivity.class);
 
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -48,6 +51,8 @@ public class MainActivity extends Activity {
 					startActivity(faqIntent);
 				} else if ("Committers".equals(item)) {
 					startActivity(committerIntent);
+				} else if ("Monitoring".equals(item)) {
+					startActivity(monitoringIntent);
 				}
 			}
 

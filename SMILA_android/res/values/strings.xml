@@ -7,5 +7,6 @@
     <string name="title_activity_committer">Committer</string>
     <string name="title_activity_description">Description</string>
     <string name="title_activity_faq">FAQ</string>
+    <string name="title_activity_monitoring">Monitoring</string>
 
 </resources>

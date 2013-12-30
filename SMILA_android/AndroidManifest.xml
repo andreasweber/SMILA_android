@@ -53,6 +53,14 @@
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="aweber.smila.MainActivity" />
         </activity>
+        <activity
+            android:name="aweber.smila.MonitoringActivity"
+            android:label="@string/title_activity_monitoring" 
+            android:parentActivityName="aweber.smila.MainActivity" >
+        	<meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="aweber.smila.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
