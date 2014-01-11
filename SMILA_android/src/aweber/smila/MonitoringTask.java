@@ -22,6 +22,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class MonitoringTask extends AsyncTask<Void, Void, String> {
 	
@@ -52,11 +53,12 @@ public class MonitoringTask extends AsyncTask<Void, Void, String> {
 	protected void onPostExecute(String results) {
 		if (results != null) {
 			showJobDetails(results);
+			showTaskDetails(results);
 		}
 	}
 
 	private void showJobDetails(String jsonString) {
-		EditText et = (EditText) _activity.findViewById(R.id.my_edit);
+		TextView jobDetails = (TextView) _activity.findViewById(R.id.job_details_textview);
 		String s = "jobs";
 		List<String> jobNames = new ArrayList<String>();
 		try {
@@ -80,12 +82,17 @@ public class MonitoringTask extends AsyncTask<Void, Void, String> {
 				}
 			}
 			fillJobSpinner(jobNames);
-			et.setText(s);
+			jobDetails.setText(s);
 
 		} catch (JSONException e) {
 			Log.e("showJobDetails()", jsonString);
-			et.setText("Error procesing JSON: " + e.getMessage());
+			jobDetails.setText("Error procesing JSON: " + e.getMessage());
 		}
+	}
+	
+	private void showTaskDetails(String jsonString) {
+		TextView taskDetails = (TextView) _activity.findViewById(R.id.task_details_textview);
+		taskDetails.setText("Tasks");
 	}
 	
 	private void fillJobSpinner(List<String> jobList) {

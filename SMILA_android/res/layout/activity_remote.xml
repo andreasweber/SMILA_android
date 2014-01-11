@@ -1,36 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:background="#000000"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="vertical" >
 
     <Spinner
         android:id="@+id/jobSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/start_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_below="@id/jobSpinner"
+        android:layout_alignParentLeft="true"
         android:text="START" />
 
     <Button
         android:id="@+id/stop_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_below="@id/jobSpinner"
+        android:layout_alignParentRight="true"
         android:text="STOP" />
+        
+    <TextView
+        android:id="@+id/job_details_textview"
+        android:background="@drawable/border_darkgreen"
+        android:layout_marginTop="20dip"
+        android:layout_below="@id/stop_button"
+        android:minLines="5"
+        android:maxLines="5"
+        android:textSize="12sp"
+        android:textColor="#A1C57D"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        android:id="@+id/task_details_textview"
+        android:background="@drawable/border_darkgreen"
+        android:layout_marginTop="10dip"
+        android:layout_below="@id/job_details_textview"
+        android:minLines="5"
+        android:maxLines="5"
+        android:textSize="12sp"
+        android:textColor="#A1C57D"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/my_edit"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dip"
-        android:editable="false"
-        android:maxLines="15"
-        android:minLines="15"
-        android:textSize="12sp" />
-
-</LinearLayout>
+</RelativeLayout>
