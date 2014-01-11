@@ -2,6 +2,8 @@ package aweber.smila;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -17,8 +19,9 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 public class MonitoringTask extends AsyncTask<Void, Void, String> {
 	
@@ -50,18 +53,18 @@ public class MonitoringTask extends AsyncTask<Void, Void, String> {
 		if (results != null) {
 			showJobDetails(results);
 		}
-		Button b = (Button) _activity.findViewById(R.id.start_button);
-		b.setClickable(true);
 	}
 
 	private void showJobDetails(String jsonString) {
 		EditText et = (EditText) _activity.findViewById(R.id.my_edit);
 		String s = "jobs";
+		List<String> jobNames = new ArrayList<String>();
 		try {
 			JSONObject jobs = new JSONObject(jsonString);
 			JSONArray jobsArray = jobs.getJSONArray("jobs");
 			for (int i = 0; i < jobsArray.length(); i++) {
 				JSONObject job = jobsArray.getJSONObject(i);
+				jobNames.add(job.getString("name"));
 				if (job.has("latestJobRun")) {
 					JSONObject latest = job.getJSONObject("latestJobRun");
 					String name = job.getString("name");
@@ -76,12 +79,21 @@ public class MonitoringTask extends AsyncTask<Void, Void, String> {
 					s = s + "\n\t\t tasks:\t\t s:" + tS + "\t\t f:" + (tF + tFR);
 				}
 			}
+			fillJobSpinner(jobNames);
 			et.setText(s);
 
 		} catch (JSONException e) {
 			Log.e("showJobDetails()", jsonString);
 			et.setText("Error procesing JSON: " + e.getMessage());
 		}
+	}
+	
+	private void fillJobSpinner(List<String> jobList) {
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(_activity,
+			android.R.layout.simple_spinner_item, jobList);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		Spinner jobSpinner = (Spinner) _activity.findViewById(R.id.jobSpinner);
+		jobSpinner.setAdapter(dataAdapter);
 	}
 	
 	protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {

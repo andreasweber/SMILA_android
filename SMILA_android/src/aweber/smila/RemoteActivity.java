@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class RemoteActivity extends Activity implements OnClickListener {
-	
+
 	String _jobRunId = null;
 
 	@Override
@@ -31,10 +31,10 @@ public class RemoteActivity extends Activity implements OnClickListener {
 			AsyncTask<Void, Void, String> taskStart = new StartTask(this);
 			taskStart.execute();
 			try {
-				String jobRunId = taskStart.get(3, TimeUnit.SECONDS); 
+				String jobRunId = taskStart.get(3, TimeUnit.SECONDS);
 				if (jobRunId != null) {
 					_jobRunId = jobRunId;
-				} 
+				}
 			} catch (Exception e) {
 				Log.e("START", e.getMessage());
 			}
