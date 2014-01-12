@@ -17,10 +17,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -59,8 +62,12 @@ public class MonitoringTask extends AsyncTask<Void, Void, String> {
 
 	private void showJobDetails(String jsonString) {
 		TextView jobDetails = (TextView) _activity.findViewById(R.id.job_details_textview);
-		String s = "jobs";
+	
 		List<String> jobNames = new ArrayList<String>();
+		
+		SpannableStringBuilder sb = new SpannableStringBuilder(" Jobs");
+		ForegroundColorSpan fcs = new ForegroundColorSpan(Color.GREEN);
+		
 		try {
 			JSONObject jobs = new JSONObject(jsonString);
 			JSONArray jobsArray = jobs.getJSONArray("jobs");
@@ -71,18 +78,22 @@ public class MonitoringTask extends AsyncTask<Void, Void, String> {
 					JSONObject latest = job.getJSONObject("latestJobRun");
 					String name = job.getString("name");
 					String state = latest.getString("state");
-					s = s + "\n\t" + name + ":\t" + state;
+					// workflow runs
 					int wfS = latest.getInt("successfulWorkflowRunCount");
 					int wfF = latest.getInt("failedWorkflowRunCount");
-					s = s + "\n\t\t wf run:\t\t s:" + wfS + "\t\t f:" + wfF;
+					// tasks
 					int tS = latest.getInt("successfulTaskCount");
 					int tF = latest.getInt("failedWithoutRetryTaskCount");
 					int tFR = latest.getInt("failedAfterRetryTaskCount");
-					s = s + "\n\t\t tasks:\t\t s:" + tS + "\t\t f:" + (tF + tFR);
+					
+					sb.append("\n\t" + name);
+					sb.append("\t" + state);
+					sb.append(Html.fromHtml("<font color='green'>\t" + wfS + "/" + tS + "</font>"));
+					sb.append(Html.fromHtml("  <font color='red'>" + wfF + "/" + (tF + tFR) + "</font>"));
 				}
 			}
 			fillJobSpinner(jobNames);
-			jobDetails.setText(s);
+			jobDetails.setText(sb, TextView.BufferType.SPANNABLE);
 
 		} catch (JSONException e) {
 			Log.e("showJobDetails()", jsonString);
@@ -92,13 +103,13 @@ public class MonitoringTask extends AsyncTask<Void, Void, String> {
 	
 	private void showTaskDetails(String jsonString) {
 		TextView taskDetails = (TextView) _activity.findViewById(R.id.task_details_textview);
-		taskDetails.setText("Tasks");
+		taskDetails.setText(" Tasks");
 	}
 	
 	private void fillJobSpinner(List<String> jobList) {
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(_activity,
-			android.R.layout.simple_spinner_item, jobList);
-		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			R.layout.job_spinner_item, jobList);
+		dataAdapter.setDropDownViewResource(R.layout.job_spinner_item);
 		Spinner jobSpinner = (Spinner) _activity.findViewById(R.id.jobSpinner);
 		jobSpinner.setAdapter(dataAdapter);
 	}
