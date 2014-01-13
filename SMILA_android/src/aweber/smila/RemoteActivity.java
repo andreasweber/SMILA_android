@@ -28,6 +28,8 @@ public class RemoteActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View clickedView) {
 		int viewId = clickedView.getId();
+		Log.e("VIEW", R.id.start_button + ", " + R.id.stop_button + ", " + viewId);
+		Log.e("JOBRUN", _jobRunId != null? _jobRunId : "NULL");
 		Button b = (Button) findViewById(viewId);
 		b.setClickable(false);
 		if (viewId == R.id.start_button) {
