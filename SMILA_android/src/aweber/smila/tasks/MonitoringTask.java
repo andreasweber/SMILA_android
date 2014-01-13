@@ -1,4 +1,4 @@
-package aweber.smila;
+package aweber.smila.tasks;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,6 +26,9 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import aweber.smila.R;
+import aweber.smila.R.id;
+import aweber.smila.R.layout;
 
 public class MonitoringTask extends AsyncTask<Void, Void, String> {
 	

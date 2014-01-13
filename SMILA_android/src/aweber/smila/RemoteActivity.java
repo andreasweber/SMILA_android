@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import aweber.smila.tasks.MonitoringTask;
+import aweber.smila.tasks.StartTask;
+import aweber.smila.tasks.StopTask;
 
 public class RemoteActivity extends Activity implements OnClickListener {
 
